@@ -1,0 +1,45 @@
+services:
+  - type: web
+    name: ivan-bogomolov-portfolio
+    env: node
+    plan: free
+    buildCommand: npm --prefix frontend ci && npm --prefix frontend run build && npm --prefix backend ci && npm --prefix backend run build
+    startCommand: npm --prefix backend run start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: CLIENT_ORIGIN
+        sync: false
+      - key: AI_PROVIDER
+        value: openai
+      - key: MAIL_OWNER_EMAIL
+        sync: false
+      - key: MAIL_FROM_NAME
+        value: Ivan Bogomolov Portfolio
+      - key: MAIL_FROM_EMAIL
+        sync: false
+      - key: SMTP_HOST
+        sync: false
+      - key: SMTP_PORT
+        sync: false
+      - key: SMTP_SECURE
+        sync: false
+      - key: SMTP_USER
+        sync: false
+      - key: SMTP_PASS
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: OPENAI_MODEL
+        value: gpt-4.1-mini
+      - key: DEEPSEEK_API_KEY
+        sync: false
+      - key: DEEPSEEK_MODEL
+        value: deepseek-v4-flash
+      - key: DEEPSEEK_BASE_URL
+        value: https://api.deepseek.com
+      - key: OLLAMA_BASE_URL
+        value: http://127.0.0.1:11434/v1
+      - key: OLLAMA_MODEL
+        value: llama3.2:3b

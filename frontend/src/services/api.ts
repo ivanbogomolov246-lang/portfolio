@@ -1,6 +1,6 @@
 import type { ApiErrorPayload, ContactFormValues } from "../types";
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL?.trim() || "http://localhost:4000";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL?.trim() || window.location.origin;
 const CONTACT_REQUEST_TIMEOUT_MS = 60_000;
 const AI_REQUEST_TIMEOUT_MS = 90_000;
 

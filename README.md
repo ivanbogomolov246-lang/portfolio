@@ -116,6 +116,28 @@ npm run dev
 Frontend: `http://localhost:5173`  
 Backend: `http://localhost:4000`
 
+## GitHub Repository (Quick Publish)
+
+1. Create an empty GitHub repository (without README and without .gitignore).
+2. Push this local project:
+
+```bash
+git remote add origin https://github.com/<your-username>/<your-repo>.git
+git push -u origin main
+```
+
+## Deploy (Render)
+
+This project includes `render.yaml` for one-click deployment of frontend + backend as one service.
+
+Deploy link format:
+
+```text
+https://render.com/deploy?repo=https://github.com/<your-username>/<your-repo>
+```
+
+After deploy, open the generated Render URL (for example `https://<service-name>.onrender.com`).
+
 ## Useful Commands
 
 ### Frontend
