@@ -184,7 +184,7 @@ OLLAMA_MODEL=llama3.2:3b
 ## GitHub: быстрая публикация
 
 ```bash
-git remote add origin https://github.com/<username>/<repo>.git
+git remote add origin https://github.com/ivanbogomolov246-lang/portfolio.git
 git push -u origin main
 ```
 
@@ -195,7 +195,7 @@ git push -u origin main
 Формат ссылки для one-click deploy:
 
 ```text
-https://render.com/deploy?repo=https://github.com/<username>/<repo>
+https://render.com/deploy?repo=https://github.com/ivanbogomolov246-lang/portfolio
 ```
 
 ## Что делалось с помощью AI

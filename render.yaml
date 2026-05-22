@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: ivan-bogomolov-portfolio
+    name: portfolio
     env: node
     plan: free
     buildCommand: npm --prefix frontend ci && npm --prefix frontend run build && npm --prefix backend ci && npm --prefix backend run build
