@@ -1,72 +1,95 @@
-# Developer Portfolio Landing (Frontend + Backend + AI)
+﻿# Лендинг-портфолио разработчика (Frontend + Backend + AI)
 
-Production-style adaptive portfolio landing for **Ivan Bogomolov** with full frontend, backend API, contact workflow, and AI summary helper.
+Современный адаптивный лендинг-портфолио для **Ивана Богомолова** с полноценным frontend, backend API, формой обратной связи и AI helper для генерации краткого описания проекта.
 
-## Stack
+## Стек
 
-- Frontend: React, TypeScript, Vite, SCSS
-- Backend: Node.js, Express, TypeScript
-- Integrations: Nodemailer, OpenAI API, DeepSeek API
-- Testing only: Ollama (local), used only for AI feature testing
-- Platform: Helmet, CORS, Morgan, Rate limiting, Zod validation
+- Frontend: `React`, `TypeScript`, `Vite`, `SCSS`
+- Backend: `Node.js`, `Express`, `TypeScript`
+- Валидация и безопасность: `Zod`, `Helmet`, `CORS`, `Morgan`, `express-rate-limit`
+- Почта: `Nodemailer`
+- AI: `OpenAI API`, `DeepSeek API`
+- Локальное тестирование AI: `Ollama` (**использовалась только для теста**)
 
-## Implemented Features
+## Реализованный функционал
 
-### About section
-- Name and role: Ivan Bogomolov, Fullstack developer
-- Stack: JavaScript, TypeScript, Node.js, NestJS, React, PostgreSQL, Redis, WebSocket, Docker
-- Experience focus: NestJS backend, LLM work, REST API, WebSocket, integrations, Redis caching, React frontend
-- Directions: Fullstack, Backend, AI integrations, automation
+### 1) Блок «Обо мне»
 
-### How I work section
-- Stages: requirements analysis, architecture, development, testing, optimization
-- AI usage: ChatGPT, Cursor, Codex, AI for ideation/refactoring/routine acceleration
+- Имя: Иван Богомолов
+- Роль: Fullstack разработчик
+- Стек: JavaScript, TypeScript, Node.js, NestJS, React, PostgreSQL, Redis, WebSocket, Docker
+- Опыт:
+  - backend-сервисы на NestJS
+  - работа с LLM
+  - REST API
+  - WebSocket
+  - интеграции
+  - Redis-кеширование
+  - frontend на React
+- Направления:
+  - Fullstack
+  - Backend
+  - AI-интеграции
+  - автоматизация
 
-### Cases section
-- LLM service on NestJS (~110 req/day, Redis -40% external calls, WebSocket, API)
-- CRM + dashboards (integrations, JWT, optimization)
+### 2) Блок «Как я работаю»
+
+- Анализ требований
+- Проектирование
+- Разработка
+- Тестирование
+- Оптимизация
+
+Отдельно отражено применение AI:
+
+- ChatGPT
+- Cursor
+- Codex
+- Генерация идей
+- Рефакторинг
+- Ускорение рутинных задач
+
+### 3) Блок «Кейсы»
+
+- LLM-сервис на NestJS:
+  - ~110 запросов в день
+  - Redis снизил внешние запросы на 40%
+  - WebSocket
+  - API
+- CRM + личные кабинеты:
+  - интеграции
+  - JWT
+  - оптимизация
 - AI workflow / Telegram bot / n8n
 
-### Contacts + form
-- Contact links: GitHub, Telegram, Email
-- Form fields: name, phone, email, comment
-- UX states: loading, success, error
-- Error coverage: empty fields, invalid email, network errors, server errors
-- Backend behavior: validates payload, sends owner email, sends user copy
+### 4) Контакты и форма
 
-### AI helper
-- Button: "Generate short summary"
-- API endpoint: `POST /api/ai-summary`
-- UX states: loading, error, result
+- Контакты: GitHub, Telegram, Email
+- Поля формы: имя, телефон, email, комментарий
+- Состояния UI: loading, success, error
+- Обработки ошибок:
+  - пустые поля
+  - некорректный email
+  - сетевые ошибки
+  - серверные ошибки
+- Backend-логика:
+  - валидация входных данных
+  - отправка письма владельцу
+  - отправка копии пользователю
 
-## Backend API
+### 5) AI helper
 
-- `GET /api/health` - health check
-- `POST /api/contact` - validated contact submission + dual email delivery
-- `POST /api/ai-summary` - validated project text + OpenAI summary response
+- Кнопка: «Сгенерировать краткое описание»
+- Endpoint: `POST /api/ai-summary`
+- Состояния: loading / error / результат
 
-## Free Local AI (Ollama)
+## API backend
 
-Ollama was used only for local testing of AI summary when paid API quotas were unavailable.
+- `GET /api/health` — проверка здоровья сервиса
+- `POST /api/contact` — отправка формы обратной связи
+- `POST /api/ai-summary` — генерация краткого описания проекта
 
-1. Install Ollama and start it.
-2. Pull a model:
-
-```bash
-ollama pull llama3.2:3b
-```
-
-3. In `backend/.env` set:
-
-```env
-AI_PROVIDER=ollama
-OLLAMA_BASE_URL=http://127.0.0.1:11434/v1
-OLLAMA_MODEL=llama3.2:3b
-```
-
-4. Restart backend.
-
-## Project Structure
+## Структура проекта
 
 ```text
 frontend/
@@ -85,60 +108,112 @@ backend/
     utils/
 ```
 
-## Run Locally
+## Запуск проекта локально
 
-1. Install dependencies:
+### 1. Установка зависимостей
 
 ```bash
-cd frontend && npm install
-cd ../backend && npm install
+cd frontend
+npm install
+
+cd ../backend
+npm install
 ```
 
-2. Create env files:
-- copy `frontend/.env.example` to `frontend/.env`
-- copy `backend/.env.example` to `backend/.env`
-- optional unified template: root `.env.example`
+### 2. Настройка `.env`
 
-3. Start backend:
+Скопируйте примеры:
+
+```bash
+copy frontend\.env.example frontend\.env
+copy backend\.env.example backend\.env
+```
+
+(или вручную создайте файлы по примеру)
+
+### 3. Запуск backend
 
 ```bash
 cd backend
 npm run dev
 ```
 
-4. Start frontend:
+### 4. Запуск frontend
 
 ```bash
 cd frontend
 npm run dev
 ```
 
-Frontend: `http://localhost:5173`  
-Backend: `http://localhost:4000`
+По умолчанию:
 
-## GitHub Repository (Quick Publish)
+- Frontend: `http://localhost:5173`
+- Backend: `http://localhost:4000`
 
-1. Create an empty GitHub repository (without README and without .gitignore).
-2. Push this local project:
+## Настройка SMTP (форма обратной связи)
+
+Для Gmail:
+
+- `SMTP_HOST=smtp.gmail.com`
+- `SMTP_PORT=465`
+- `SMTP_SECURE=true`
+- `SMTP_USER=ваш_gmail`
+- `SMTP_PASS=пароль_приложения_Google`
+
+Важно:
+
+- нужен именно **App Password** Google (не обычный пароль аккаунта)
+- при активном VPN SMTP может не работать корректно
+
+## AI-провайдеры
+
+Поддерживаются `openai`, `deepseek`, `ollama`.
+
+### Ollama (только для локального теста)
+
+`Ollama` в этом проекте использовалась **только для тестирования AI-функции**, когда не использовались платные API.
+
+Пример:
+
+```env
+AI_PROVIDER=ollama
+OLLAMA_BASE_URL=http://127.0.0.1:11434/v1
+OLLAMA_MODEL=llama3.2:3b
+```
+
+## GitHub: быстрая публикация
 
 ```bash
-git remote add origin https://github.com/<your-username>/<your-repo>.git
+git remote add origin https://github.com/<username>/<repo>.git
 git push -u origin main
 ```
 
-## Deploy (Render)
+## Деплой (Render)
 
-This project includes `render.yaml` for one-click deployment of frontend + backend as one service.
+В проект добавлен `render.yaml` для деплоя frontend+backend одним сервисом.
 
-Deploy link format:
+Формат ссылки для one-click deploy:
 
 ```text
-https://render.com/deploy?repo=https://github.com/<your-username>/<your-repo>
+https://render.com/deploy?repo=https://github.com/<username>/<repo>
 ```
 
-After deploy, open the generated Render URL (for example `https://<service-name>.onrender.com`).
+## Что делалось с помощью AI
 
-## Useful Commands
+- Варианты формулировок контента
+- Быстрый брейншторминг по edge-case сценариям
+- Подсказки по структуре модулей и обработке ошибок
+
+## Что исправлялось вручную
+
+- Финальная архитектура `routes/controllers/services/utils`
+- Валидация и контракты ошибок API
+- UI/UX правки и адаптив
+- Интеграция и стабилизация SMTP-отправки
+- Диагностика и фиксы по AI-провайдерам, timeout и fallback-сценариям
+- Подготовка конфигурации деплоя
+
+## Полезные команды
 
 ### Frontend
 
@@ -155,16 +230,3 @@ npm run typecheck
 npm run build
 npm run start
 ```
-
-## AI vs Manual Work
-
-- AI-assisted: initial section wording options, endpoint-level edge-case brainstorming, and service structure sanity checks.
-- Manually finalized: architecture split (`routes/controllers/services/utils`), validation/error contracts, adaptive UI behavior, and production hardening.
-
-## Validation Before Delivery
-
-- Frontend typecheck: passed
-- Frontend build: passed
-- Backend typecheck: passed
-- Backend build: passed
-- Backend runtime smoke test: `GET /api/health` passed
